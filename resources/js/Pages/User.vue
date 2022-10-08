@@ -1,4 +1,9 @@
 <template>
+        <!-- <Head>
+            <title>User</title>
+        </Head> --> <!-- option 1 -->
+        <!-- <Head title="User1"></Head> -->  <!-- option 2 -->
+        <Head title="User1"></Head>
         <h1 class="text-4xl font-bold">User</h1>
 
         <div style="margin-top:800px">
