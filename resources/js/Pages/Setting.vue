@@ -1,12 +1,12 @@
 <template>
-    <h1>Setting</h1>
-
-    <Nav />
+    <Layout>
+        <h1 class="text-4xl font-bold">Setting</h1>
+    </Layout>
 </template>
 
 <script>
-    import Nav from '../Shared/Nav'
+    import Layout from '../Shared/Layout'
     export default {
-        components: { Nav },
+        components: { Layout },
     }
 </script>

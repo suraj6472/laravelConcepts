@@ -1,6 +1,6 @@
 <template>
-    <nav class="mt-6">
-        <ul class="list-disc">
+    <nav class="ml-6">
+        <ul class="flex list-disc space-x-4 list-inside">
             <!-- <li><Link class="text-blue-500 hover:underline" href="/" :class="{'font-bold underline': true}">Home</Link></li> -->
             <!-- check 1 -->
             <!-- <li><Link class="text-blue-500 hover:underline" href="/" :class="{'font-bold underline': $page.url === '/'}">Home</Link></li> -->
