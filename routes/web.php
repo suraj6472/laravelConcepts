@@ -17,18 +17,15 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-//    return inertia('Welcome'); way 1
-
-//    return Inertia::render('Welcome'); // way 2
-
-
-    return Inertia::render('Home', [
-        'name' => "Suraj",
-        'frameworks' => [
-            'Laravel', 'Vue', 'Inertia'
-        ]
-    ]);
+    return Inertia::render('Home');
+});
 
 
+Route::get('/users', function () {
+    return Inertia::render('User');
+});
 
+
+Route::get('/settings', function () {
+    return Inertia::render('Setting');
 });
