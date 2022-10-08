@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+// use Inertia\Inertia; // way 2
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    return inertia('Welcome'); way 1
+
+//    return Inertia::render('Welcome'); // way 2
+
+
+    return Inertia::render('Home', [
+        'name' => "Suraj",
+        'frameworks' => [
+            'Laravel', 'Vue', 'Inertia'
+        ]
+    ]);
+
+
+
 });
