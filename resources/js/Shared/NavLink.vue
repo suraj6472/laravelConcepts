@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
+// import { Link } from "@inertiajs/inertia-vue3"; /* option 1 */
 export default {
-    components: { Link },
+    // components: { Link }, /* option 1 */
     props: {
         active: Boolean,
     },
