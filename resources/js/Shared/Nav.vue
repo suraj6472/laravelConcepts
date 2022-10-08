@@ -1,17 +1,38 @@
 <template>
     <nav class="mt-6">
         <ul class="list-disc">
-            <li><Link class="text-blue-500 hover:underline" href="/">Home</Link></li>
-            <li><Link class="text-blue-500 hover:underline" href="/users">User</Link></li>
-            <li><Link class="text-blue-500 hover:underline" href="/settings">Setting</Link></li>
-            <li><Link class="text-blue-500 hover:underline" href="/logout" method="post" as="button" :data="{foo: 'bar'}">Log Out</Link></li>
+            <!-- <li><Link class="text-blue-500 hover:underline" href="/" :class="{'font-bold underline': true}">Home</Link></li> -->
+            <!-- check 1 -->
+            <!-- <li><Link class="text-blue-500 hover:underline" href="/" :class="{'font-bold underline': $page.url === '/'}">Home</Link></li> -->
+            <!-- check 2 -->
+            <!-- <li><Link class="text-blue-500 hover:underline" href="/" :class="{'font-bold underline': $page.component === 'Home'}">Home</Link></li> -->
+            <!-- check 3 -->
+            <!-- <li><Link class="text-blue-500 hover:underline" href="/users?foo=bar" :class="{'font-bold underline': $page.url.startsWith('/users')}">User</Link></li> -->   <!-- check 4 -->
+
+            <li>
+                <!-- <Link
+                    class="text-blue-500 hover:underline"
+                    href="/"
+                    :class="{
+                        'font-bold underline': $page.component === 'Home',
+                    }"
+                    >Home</Link
+                > --> <!-- check 5 -->
+                <NavLink href="/" :active="$page.component === 'Home'">Home</NavLink>
+            </li>
+            <li>
+                <NavLink href="/users" :active="$page.component === 'User'">User</NavLink>
+            </li>
+            <li>
+                <NavLink href="/settings" :active="$page.component === 'Setting'">Setting</NavLink>
+            </li>
         </ul>
     </nav>
 </template>
 
 <script>
-    import { Link } from '@inertiajs/inertia-vue3'
-    export default {
-        components: { Link },
-    };
+import NavLink from './NavLink'
+export default {
+    components: { NavLink },
+};
 </script>
