@@ -10,13 +10,9 @@
     </Layout>
 </template>
 
-<!-- with this setup in script tag we don;t need to do export default -->
 <script setup>
     import Layout from '../Shared/Layout';
     import { Link } from '@inertiajs/inertia-vue3'
-
-    /* in case of setup, we accept props with below syntax */
-
     defineProps({
         time: String
     })
