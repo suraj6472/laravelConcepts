@@ -30,3 +30,8 @@ Route::get('/users', function () {
 Route::get('/settings', function () {
     return Inertia::render('Setting');
 });
+
+Route::post('/logout', function () {
+    /* dd('you are logging out from here'); */ /* check 3 */
+    dd(request('foo'));
+});
