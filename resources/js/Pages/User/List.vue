@@ -17,33 +17,25 @@
         </div>
 </template>
 
-<script>
+<script setup>
     import { Inertia } from '@inertiajs/inertia'
+    import { ref, watch } from 'vue'
     import Pagination from '../../Shared/Pagination'
-    export default {
-        data() {
-            return {
-                search: '',
-            }
-        },
-        props: {
-            users: Object,
-            filters: Object
-        },
-        components: {
-           Pagination
-        },
+    import throttle from 'lodash/throttle'
+    import debounce from 'lodash/debounce'
 
-        watch: {
-            search(value) {
-                Inertia.get('/users', {search: value}, {
-                    preserveState: true,
-                    replace: true
-                })
-            }
-        },
-        created() {
-            this.search = this.filters.search
-        }
-    }
+    let props = defineProps({
+        users: Object,
+        filters: Object
+    });
+
+    let search = ref(props.filters.search);
+
+    // watch(search, throttle(function(value) {
+    watch(search, debounce(function(value) { //  it will make request after 500 when user stops typing text box
+            Inertia.get('/users', {search: value}, {
+                preserveState: true,
+                replace: true
+            })
+    }, 500));
 </script>
