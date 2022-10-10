@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
+
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -24,7 +25,7 @@ Route::get('/', function () {
 
 
 Route::get('/users', function () {
-    return Inertia::render('User', [
+    return Inertia::render('User/List', [
         'filters' => Request::only(['search']),
         'users' => User::query()
         ->when(Request::input('search'), function($query, $search) {
@@ -38,6 +39,22 @@ Route::get('/users', function () {
         ]),
 
     ]);
+});
+
+Route::get('/users/create', function () {
+    return Inertia::render('User/Create');
+});
+
+Route::POST('/users', function () {
+    $validated = request()->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required'
+    ]);
+
+    User::create($validated);
+
+    return redirect('/users');
 });
 
 

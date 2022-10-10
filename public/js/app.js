@@ -26922,6 +26922,22 @@ var map = {
 	"./User.vue": [
 		"./resources/js/Pages/User.vue",
 		"resources_js_Pages_User_vue"
+	],
+	"./User/Create": [
+		"./resources/js/Pages/User/Create.vue",
+		"resources_js_Pages_User_Create_vue"
+	],
+	"./User/Create.vue": [
+		"./resources/js/Pages/User/Create.vue",
+		"resources_js_Pages_User_Create_vue"
+	],
+	"./User/List": [
+		"./resources/js/Pages/User/List.vue",
+		"resources_js_Pages_User_List_vue"
+	],
+	"./User/List.vue": [
+		"./resources/js/Pages/User/List.vue",
+		"resources_js_Pages_User_List_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -27060,7 +27076,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Home_vue":1,"resources_js_Pages_Setting_vue":1,"resources_js_Pages_User_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Home_vue":1,"resources_js_Pages_Setting_vue":1,"resources_js_Pages_User_vue":1,"resources_js_Pages_User_Create_vue":1,"resources_js_Pages_User_List_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
