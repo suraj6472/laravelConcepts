@@ -1,7 +1,10 @@
 <template>
         <Head title="User1"></Head>
         <div class="flex justify-between mb-5">
-            <h1 class="text-4xl font-bold">User</h1>
+            <div class="flex">
+                <h1 class="text-4xl font-bold">User</h1>
+                <Link href="/users/create" class="text-blue-500 ml-2">New User</Link>
+            </div>
             <input type="text" placeholder="Search..." class="border px-2" v-model="search">
         </div>
 
