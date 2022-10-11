@@ -3,13 +3,13 @@
         <div class="flex justify-between mb-5">
             <div class="flex">
                 <h1 class="text-4xl font-bold">User</h1>
-                <Link href="/users/create" class="text-blue-500 ml-2">New User</Link>
+                <Link href="/users/create" class="text-blue-500 ml-2" v-if="can.createUser">New User</Link>
             </div>
             <input type="text" placeholder="Search..." class="border px-2" v-model="search">
         </div>
 
         <ul>
-            <li v-for="user of users.data" :key="user.id">{{ user.name }}</li>
+            <li v-for="user of users.data" :key="user.id">{{ user.name }} <span v-if="user.can.edit">Edit</span> </li>
         </ul>
 
         <div>
@@ -26,7 +26,8 @@
 
     let props = defineProps({
         users: Object,
-        filters: Object
+        filters: Object,
+        can: Object,
     });
 
     let search = ref(props.filters.search);
