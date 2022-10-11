@@ -26,6 +26,9 @@
             <li>
                 <NavLink href="/settings" :active="$page.component === 'Setting'">Setting</NavLink>
             </li>
+            <li>
+                <NavLink href="/logout" method="post">Logout</NavLink>
+            </li>
         </ul>
     </nav>
 </template>

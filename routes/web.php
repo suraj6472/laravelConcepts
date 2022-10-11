@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
 
@@ -19,46 +20,56 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home');
-});
+Route::get('login', [LoginController::class, 'index'])->name('login');
+
+Route::post('login', [LoginController::class, 'store']);
+
+Route::post('logout', [LoginController::class, 'destroy']);
+
+Route::middleware('auth')->group(function () {
 
 
-Route::get('/users', function () {
-    return Inertia::render('User/List', [
-        'filters' => Request::only(['search']),
-        'users' => User::query()
-        ->when(Request::input('search'), function($query, $search) {
-            $query->where('name', 'like', "%{$search}%");
-        })
-        ->paginate(15)
-        ->withQueryString() // preserve query string
-        ->through(fn($user) => [
-            'id' => $user->id,
-            'name' => $user->name
-        ]),
-
-    ]);
-});
-
-Route::get('/users/create', function () {
-    return Inertia::render('User/Create');
-});
-
-Route::POST('/users', function () {
-    sleep(3);
-    $validated = request()->validate([
-        'name' => 'required',
-        'email' => 'required',
-        'password' => 'required'
-    ]);
-
-    User::create($validated);
-
-    return redirect('/users');
-});
+    Route::get('/', function () {
+        return Inertia::render('Home');
+    });
 
 
-Route::get('/settings', function () {
-    return Inertia::render('Setting');
+    Route::get('/users', function () {
+        return Inertia::render('User/List', [
+            'filters' => Request::only(['search']),
+            'users' => User::query()
+                ->when(Request::input('search'), function ($query, $search) {
+                    $query->where('name', 'like', "%{$search}%");
+                })
+                ->paginate(15)
+                ->withQueryString() // preserve query string
+                ->through(fn ($user) => [
+                    'id' => $user->id,
+                    'name' => $user->name
+                ]),
+
+        ]);
+    });
+
+    Route::get('/users/create', function () {
+        return Inertia::render('User/Create');
+    });
+
+    Route::POST('/users', function () {
+        sleep(3);
+        $validated = request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        User::create($validated);
+
+        return redirect('/users');
+    });
+
+
+    Route::get('/settings', function () {
+        return Inertia::render('Setting');
+    });
 });

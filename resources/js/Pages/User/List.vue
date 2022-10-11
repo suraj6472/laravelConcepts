@@ -21,7 +21,7 @@
     import { Inertia } from '@inertiajs/inertia'
     import { ref, watch } from 'vue'
     import Pagination from '../../Shared/Pagination'
-    import throttle from 'lodash/throttle'
+    // import throttle from 'lodash/throttle'
     import debounce from 'lodash/debounce'
 
     let props = defineProps({
