@@ -60,32 +60,32 @@
       },
       methods: {
         getComments() {
-          axios.get('/api/posts/'+this.post.id+'/comments')
-                .then((response) => {
-                  this.comments = response.data
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
+            axios.get('/api/posts/'+this.post.id+'/comments')
+            .then((response) => {
+                this.comments = response.data
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         },
         postComment() {
-          axios.post('/api/posts/'+this.post.id+'/comment', {
-            api_token: this.user.api_token,
-            body: this.commentBox
-          })
-          .then((response) => {
-            this.comments.unshift(response.data);
-            this.commentBox = '';
-          })
-          .catch((error) => {
-            console.log(error);
-          })
+            console.log(this.user);
+            axios.post('/api/posts/'+this.post.id+'/comment', {
+                api_token: this.user.api_token,
+                body: this.commentBox
+            })
+            .then((response) => {
+                this.commentBox = '';
+            })
+            .catch((error) => {
+                console.log(error);
+            })
         },
         listen() {
-        //   Echo.private('post.'+this.post.id)
-        //       .listen('NewComment', (comment) => {
-        //         this.comments.unshift(comment);
-        //       })
+            Echo.private('post.'+this.post.id)
+              .listen('NewComment', (comment) => {
+                this.comments.unshift(comment);
+              })
         }
       }
     })
