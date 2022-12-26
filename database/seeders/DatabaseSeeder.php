@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->count(25)->create()->each(function($u) {
+            for ($i=0; $i <= 3; $i++) {
+                $u->posts()->save(Post::factory()->make());
+            }
+        });
     }
 }
