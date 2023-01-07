@@ -78,7 +78,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-      $post = Post::findOrFail($id);
+        $post = Post::findOrFail($id);
+        $this->authorize('update', $post);
       return view('posts.edit')->withPost($post);
     }
 
@@ -114,5 +115,6 @@ class PostController extends Controller
     public function destroy($id)
     {
       Post::destroy($id);
+      return redirect()->route('posts.index');
     }
 }

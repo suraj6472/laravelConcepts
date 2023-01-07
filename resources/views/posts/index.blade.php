@@ -28,7 +28,18 @@
             <th>{{ $post->id }}</th>
             <td>{{ $post->title }}</td>
             <td>{{ $post->published ? "Published" : "Draft" }}</td>
-            <td><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-default">Edit</a></td>
+            <td>
+              {{-- @can('post_delete', $post) --}}
+              @can('delete', $post)
+              <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-default">Edit</a>
+              <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-default">View</a>
+              <button class="btn btn-sm btn-default" onclick="document.getElementById('form{{ $post->id }}').submit()">Delete</button>
+              <form action="{{ route('posts.destroy', $post->id) }}" method="post" id="form{{$post->id}}">
+                @method('delete')
+                @csrf
+              </form>
+              @endcan
+            </td>
           </tr>
         @endforeach
       </tbody>

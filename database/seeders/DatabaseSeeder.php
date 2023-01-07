@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(25)->create()->each(function($u) {
+        User::factory()->count(2)->create()->each(function($u) {
             for ($i=0; $i <= 3; $i++) {
                 $u->posts()->save(Post::factory()->make());
             }
